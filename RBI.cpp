@@ -1,8 +1,5 @@
-//only test case 4 not working
 #include <iostream>
-
 using namespace std;
-
 class Bank
 {
     char name[20];
@@ -21,12 +18,7 @@ public:
         cin >> depost;
     }
 
-    void disp()
-    {
-        cout << "NAME=" << name << endl
-             << "ACCNO=" << acc << endl
-             << "TYPE=" << accounttype << endl;
-    }
+
 
     void withdraw()
     {
@@ -34,12 +26,21 @@ public:
         if (debit < balance + depost)
         {
             balance = balance + depost - debit;
-            cout << "BALANCEAMOUNT=" << balance << endl;
+            
         }
         else if (debit > balance + depost)
         {
+          balance = balance + depost;
             cout << "Insufficient amount" << endl;
-        }
+        }    
+    }
+      void disp()
+    {
+        cout << "NAME=" << name << endl
+             << "ACCNO=" << acc << endl
+             << "TYPE=" << accounttype << endl
+             << "BALANCEAMOUNT="<< balance<<endl;
+    
     }
 };
 int main()
@@ -47,7 +48,8 @@ int main()
     Bank obj;
     obj.intial();
     obj.deposit();
+  obj.withdraw();
     obj.disp();
-    obj.withdraw();
+    
     return 0;
 }
